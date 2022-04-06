@@ -1,0 +1,44 @@
+replicaCount: 2
+image:
+  repository: registy.btcbolsa.host
+  tag: dev
+  pullPolicy: IfNotPresent
+
+env:
+  ADMIN_USER_UID: QAVU4GDJ4SA
+
+ingress:
+  issuer: letsencrypt-prod
+  host: app.arbwallet.io
+  path: /
+
+internalPort: 3000
+externalPort: 80
+
+resources:
+  limits:
+    cpu: 800m
+    memory: 1024Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 90
+
+enableProbe: true
+probePath: /
+livenessProbe:
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+readinessProbe:
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+terminationGracePeriodSeconds: 10

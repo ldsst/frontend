@@ -1,0 +1,176 @@
+// Config
+@import './config/variables.scss';
+.dark-theme {
+
+  .font-lg {
+    td, th {
+      font-size: 14px !important;
+    }
+  }
+
+  .ant-table {
+    font-family: $primary-font;
+    font-size: 13px;
+
+    table{
+      td, th{
+        white-space: nowrap;
+      }
+    }
+  }
+
+  tr.ant-table-row {
+    background-color: $bg-table-body;
+  }
+
+  tr.ant-table-row:nth-child(even) {
+    background-color: rgba(193, 193, 193, .8);
+  }
+
+  tr.ant-table-row .plus {
+      color:  $primary-color !important;
+  }
+
+  tr.ant-table-row .minus {
+      color: rgb(255, 91, 91) !important;
+  }
+
+  thead.ant-table-thead {
+    color: $color-text-table-header;
+  }
+
+  tbody.ant-table-thead {
+    color: $color-text-table-body;
+  }
+
+  .ant-table-placeholder {
+    color: $color-text-table-body;
+  }
+
+  .ant-table-thead > tr > th {
+    background: $bg-antd-table-header !important;
+     color: #fff !important;
+  }
+
+  .ant-table-row td {
+    // color: #fff;
+    font-weight: normal;
+  }
+
+  .ant-table-tbody > tr {
+    transition: none !important;
+  }
+
+  .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-thead > tr:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr:not(.ant-table-expanded-row) > td {
+    transition: none !important;
+  }
+
+  .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+    transition: none !important;
+    background: rgba(0,0,0,.1) !important;
+  }
+
+  .ant-table-thead > tr > th, .ant-table-tbody > tr > td:not(.ant-table-row-expand-icon-cell) {
+    padding: 10px !important;
+  }
+
+  .ant-table-row-expand-icon-cell {
+    padding: 0 !important;
+    width: 10px !important;
+    min-width: 10px !important;
+    max-width: 10px !important;
+    span {
+      background: rgba(0,0,0,.3);
+      color: #fff;
+      border-color: rgba(255,255,255,.3);
+    }
+  }
+
+  .ant-table-tbody {
+    border: none !important;
+  }
+
+  .ant-table-thead > tr > th {
+    border-bottom: 1px solid $color-text-table-header !important;
+    border-radius: 0 !important;
+  }
+
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px solid rgba(255,255,255,.1) !important;
+  }
+
+  .ant-table-expanded-row {
+    background: rgba(0,0,0,.1) !important;
+    color: #fff !important;
+  }
+
+  .ant-table-expanded-row td {
+    font-weight: normal;
+    font-size: 0.9rem;
+    letter-spacing: 0;
+  }
+
+  .ant-pagination-item {
+    background: $bg-antd-table-header !important;
+    border-color: rgba(255,255,255,.2) !important;
+    color: $color-text-filter;
+  }
+
+  // .ant-pagination-item-active {
+  //   border-color: rgba(255,255,255,.5) !important;
+  // }
+
+  .ant-pagination-item a, .ant-pagination-item-active a {
+    color: $color-text-filter;
+  }
+
+  .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+    background: $bg-antd-table-button-next-pagination !important;
+    color: $color-text-filter;
+    border-color: rgba(255,255,255,.2) !important;
+  }
+
+  .ant-pagination-prev .ant-pagination-item-link svg, .ant-pagination-next .ant-pagination-item-link svg {
+    color: $color-text-filter;
+    border-color: rgba(255,255,255,.2) !important;
+  }
+
+  .ant-select-selection {
+    background: $bg-table-body;
+    color: $color-text-filter;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-color: rgba(255,255,255,.4) !important;
+    border-radius: 2px !important;
+  }
+
+  .ant-select-icon {
+    color: $color-text-filter;
+    background: $bg-antd-table-header;
+    border-color: $bg-antd-table-header;
+  }
+
+  .ant-select-selection__placeholder {
+    color: #000 !important;
+  }
+
+  .ant-select-arrow-icon, .ant-select-arrow-icon i {
+    color: $color-text-filter;
+  }
+
+  .ant-select-dropdown-menu {
+    border-radius: 0 !important;
+    border: 1px solid red !important;
+  }
+
+  .ant-select-dropdown-menu-item {
+    background: $item-color !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+  }
+
+  .ant-table-empty .ant-table-placeholder {
+    border: none !important;
+    background: $bg-antd-table-button-next-pagination;
+  }
+}

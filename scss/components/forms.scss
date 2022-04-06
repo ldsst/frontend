@@ -1,0 +1,86 @@
+// Forms
+
+.primary-field {
+    position: relative;
+    font-family: $primary-font;
+    color: $four-color;
+    letter-spacing: 0;
+    background-color: white;
+    padding: .5rem 1rem;
+    border: thin solid #DDD;
+    transition: all 0.2s ease-out;
+    outline: none;
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.15);
+        opacity: 1;
+    }
+
+    &--light, .ant-input-number-input {
+        box-sizing: border-box;
+        background: transparent !important;
+        height: 35px;
+        letter-spacing: 0;
+        color: #333;
+        border-color: rgba(0, 0, 0, 0.2);
+        &:hover {
+            border-color: rgba(0, 0, 0, 0.5);
+        }
+        option {
+            color: $primary-button;
+        }
+    }
+    &--first {
+        margin-right: 10px;
+    }
+    &--center {
+        margin: 0 10px;
+    }
+    &--last {
+        margin-right: 0;
+    }
+}
+
+select.primary-field {
+    padding-top: 6px;
+    padding-left: 10px;
+}
+
+// Upload File
+.input-file-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.input-file-trigger {
+    cursor: pointer;
+}
+.input-file {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    height: 36px;
+    z-index: 10;
+    // pointer-events: none;
+    cursor: pointer;
+}
+.input-file:hover + .input-file-trigger,
+.input-file:focus + .input-file-trigger,
+.input-file-trigger:hover,
+.input-file-trigger:focus {
+    // background: #34495E;
+    // color: #39D2B4;
+}
+
+.file-return {
+    margin: 1em 0;
+    background: #f3f3f3;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    font-size: 1rem;
+}

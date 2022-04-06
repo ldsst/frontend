@@ -1,0 +1,774 @@
+.wrap-table, .ant-table-content{
+    overflow-x: auto;
+}
+
+
+.table-main{
+    background-color: $bg-table-body;
+    width: 100%;
+    font-size: .7rem;
+    position: relative;
+    letter-spacing: 0;
+    margin: 0;
+
+    td{
+        padding: 2px 5px;
+    }
+
+    tr td:first-child {
+      padding-left: 10px;
+    }
+
+    &--order {
+        background: $bg-table-body;
+        margin-bottom: 10px;
+        height: 100%;
+        flex: 2;
+        margin-right: 8px;
+    }
+
+    &--trades {
+        background: $bg-table-body;
+        margin-bottom: 10px;
+        height: 100%;
+        flex: 1;
+
+        th{
+            padding-top: 7px !important;
+        }
+
+        td{
+            padding: 2px;
+        }
+
+    }
+
+    &--saldo {
+        width: 99%;
+    }
+
+    &__caption {
+        display: inline-block;
+        background-color: $bg-table-body;
+        width: calc(30% - 0.8rem);
+        padding: 0.8rem;
+        box-sizing: border-box;
+        align-items: center;
+        margin: 0;
+    }
+
+    &__buttons {
+      display: inline-block;
+      width: calc(70% - 0.8rem);
+      padding: 0.8em;
+      margin: 0;
+      text-align: right;
+    }
+
+    &__inside {
+        width: 50%;
+        margin-top: 5px;
+
+        td{
+            padding: 2px 10px;
+            white-space: nowrap;
+            box-sizing: border-box;
+            min-width: 110px;
+
+            a{
+                display: inline;
+                padding: 0 7px;
+            }
+        }
+
+        &:first-child {
+          border-right: thin solid $bg-table-body-hover;
+        }
+    }
+
+    th {
+        text-align: center;
+        padding: .2rem 0px 1rem 5px;
+        font-size: 0.8rem !important;
+        letter-spacing: 0 !important;
+        &:first-child {
+            &::before {
+               content: "";
+               position: absolute;
+               width: 100%;
+               height: 1px;
+               background-color: #2F3A53;
+               top: 2rem;
+               left: 0;
+            }
+        }
+
+    }
+
+    td {
+        font-weight: bold;
+    }
+
+    &__azul {
+        color: $primary-color;
+
+    }
+    &__red {
+        color: $third-color;
+        justify-content: space-around;
+    }
+    &__icon {
+        width: .5rem;
+    }
+    &__cap-button {
+        border: thin solid #c1c1c1;
+        padding: .2rem .5rem;
+        //opacity: .5;
+        border-radius: 3px;
+        font-size: .7rem;
+        margin-left: 10px;
+        &:hover {
+            background-color: #c1c1c1;
+            color: $secondary-color;
+        }
+        &--selected {
+            background-color: #c1c1c1;
+            color: $secondary-color;
+            /*&:hover {
+                background-color: $secondary-color;
+                color: #FFF;
+            }*/
+        }
+    }
+    &__button {
+        margin-left: 1rem;
+        opacity: .5;
+        position: relative;
+        transition: .5s all;
+        font-size: 1rem;
+
+        &:hover{
+            opacity: 1;
+        }
+
+        &--active {
+            opacity: 1;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                top: 1.5rem;
+                left: 0;
+                background-color: #FFF;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1280px) {
+    .table-main--order {
+        margin-right: 0;
+    }
+}
+
+td{
+    font-weight: bold;
+}
+
+.table-strip {
+    margin-top: 2rem;
+    &--half {
+        width: 49%;
+    }
+    &__caption {
+        font-weight: bold;
+        margin-bottom: .5rem;
+        width: 99%;
+    }
+    &__act {
+        border: thin solid #c1c1c1;
+        padding: .2rem;
+        margin-left: .3rem;
+        text-transform: uppercase;
+    }
+    &__table {
+        width: 99%;
+        border-collapse: collapse;
+        th {
+            text-align: left;
+            opacity: .5;
+            padding: .7rem 0;
+            &:first-child {
+                padding-left: 1rem;
+            }
+        }
+        tr {
+            &:nth-child(even) {
+                background-color: $bg-table-body;
+            }
+        }
+        td {
+            padding: .5rem 0;
+            &:first-child {
+                padding-left: 1rem;
+            }
+        }
+    }
+    &__moedas {
+        width: 99%;
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+        padding-bottom: .8rem;
+        //border-bottom: thin solid rgba(255,255,255,.5);
+    }
+    &__moedas-button {
+        padding: .3rem;
+        border: thin solid $bg-table-body;
+        color: $bg-table-body;
+        margin-right: .5rem;
+        &--selected {
+            background-color: $bg-table-body;
+            color: $bg-table-body;
+        }
+        &:hover {
+            background-color: $bg-table-body;
+            color: #FFF;
+        }
+    }
+}
+
+.overlay-deposito {
+    background-color: #FFF;
+    border: thin solid #DDD;
+    //padding: 1rem;
+    color: #000;
+    width: 600px;
+    z-index: 1;
+
+    &__receipt-label {
+        font-size: 15px;
+        color: green;
+        position: absolute;
+        top: 0.4rem;
+        left: 10px;
+    }
+
+    &__item-span {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    &__item-span-2 {
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    &__receipt-label-invalid {
+        font-size: 15px;
+        color: black;
+        position: absolute;
+        top: 0.4rem;
+        left: 10px;
+    }
+
+    &__header {
+        padding: 1rem 1.5rem;
+        // text-transform: uppercase;
+        border-bottom: thin solid #DDD;
+        display: flex;
+        letter-spacing: -0.05em;
+        align-items: center;
+        font-size: 1rem;
+        background: #f8f8f8;
+        color: $four-color;
+    }
+    &__footer {
+        padding: 1rem 1.5rem;
+        border-top: thin solid #DDD;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__close {
+        margin-left: auto;
+        img {
+            height: .7rem;
+            cursor: pointer;
+            transition: all .3s ease;
+            &:hover {
+                transform: rotate(45deg);
+            }
+        }
+    }
+    &__content {
+        padding: 1.5rem;
+    }
+    &__wallet {
+        background-color: #FFF;
+        width: 100%;
+        padding: 1rem;
+        border: thin solid #DDD;
+        box-sizing: border-box;
+        display: flex;
+    }
+    &__wallet-input {
+        background: transparent;
+        border: none;
+        width: 100%;
+        cursor: default;
+    }
+    &__input {
+        background-color: #FFF;
+        width: 100%;
+        padding: .5rem 1rem;
+        border: thin solid #DDD;
+        box-sizing: border-box;
+        display: flex;
+        outline: none;
+    }
+    &__copy {
+        height: 1rem;
+        margin-left: auto;
+    }
+    &__container-input {
+        margin-bottom: .5rem;
+    }
+    &__info {
+        display: flex;
+        margin-top: 1rem;
+    }
+    &__label {
+        display: block;
+        margin-bottom: .2rem;
+        color: $color-text-table-body;
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+    &__container-txt {
+        width: 60%;
+    }
+    &__title {
+        font-weight: lighter;
+        margin-bottom: .3rem;
+    }
+    &__fig-qr-code {
+        width: 40%;
+        display: flex;
+    }
+    &__qr-code {
+        height: 8.3rem;
+        margin-left: auto;
+    }
+    &__p {
+        margin-bottom: 1rem;
+    }
+
+    &__banks {
+        font-family: $primary-font;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 0.5rem 0 1.5em 0;
+        &__item  {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18%;
+            margin-right: 1.9%;
+            height: 70px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            transition: all 0.2s ease-out;
+            &:hover {
+                background: darken(#f9f9f9, 7%);
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            span {
+                width: 55px;
+                height: 55px;
+                background: url('/static/img/bancos-state.png') 0 0 no-repeat;
+            }
+
+            &--others {
+                text-transform: uppercase;
+                letter-spacing: -0.05em;
+                font-weight: 700;
+                color: $color-text-table-body;
+                border-color: darken(#f9f9f9, 8%);
+                &:hover,
+                &.selected {
+                    color: #222;
+                    background: rgba(0,0,0,.1);
+                    border-color: #222;
+                }
+            }
+
+            &--santander {
+                span {
+                    background-position: 0 -55px;
+                }
+                &:hover,
+                &.selected {
+                    background: #ff0201;
+                    span {
+                        background-position: 0 0;
+                    }
+                }
+            }
+
+            &--bb {
+                span {
+                    background-position: 0 -165px;
+                }
+                &:hover,
+                &.selected {
+                    background: $bg-table-body;
+                    span {
+                        background-position: 0 -110px;
+                    }
+                }
+            }
+
+            &--caixa {
+                span {
+                    background-position: 0 -275px;
+                }
+                &:hover,
+                &.selected {
+                    background: #c68305;
+                    span {
+                        background-position: 0 -220px;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    &__type {
+        border-radius: 3px;
+        background: transparent;
+        border: 1px solid rgb(221,221,221);
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0.5rem 0 1.5em 0;
+        letter-spacing: -0.04em;
+        font-weight: 600;
+    }
+    &__docTed {
+        display: flex;
+        margin: 0.5rem 0 1.5em 0;
+    }
+    &__buttonTrans {
+        width: 50%;
+        padding: 0.7rem;
+        border: thin solid $four-color;
+        color: $four-color;
+        &.selected {
+            background-color: $four-color;
+            color: #FFF;
+        }
+    }
+    &__value {
+        margin: 0.5rem 0 1rem 0;
+        color: #000;
+        border-radius: 2px;
+        &:focus {
+            color: $four-color;
+            border-color: $four-color;
+        }
+    }
+
+    &__bar {
+        $bar-size: 25px;
+        box-sizing: border-box;
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: $bar-size;
+        align-items: center;
+        background: #d4d4d4;
+        &__current,
+        &__container {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        &__current {
+            background: #4dc647;
+            z-index: 0;
+            transition: all 0.3s ease-out;
+        }
+        &__container {
+            color: white;
+            z-index: 1;
+        }
+        &__limit,
+        &__value {
+            box-sizing: border-box;
+            padding: 4px 15px 3px 15px;
+            text-transform: uppercase;
+            height: $bar-size;
+            letter-spacing: -0.035em;
+        }
+        &__limit {
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        &__increase {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-decoration: none;
+            color: $four-color;
+            letter-spacing: -0.05em;
+            font-weight: 600;
+            padding: 0.7em 0;
+            transition: all 0.2s ease-out;
+            &:hover {
+                color: darken($four-color, 20%);
+            }
+        }
+        &__help {
+            $button-size: 16px;
+            width: $button-size;
+            height: $button-size;
+            color: white;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 100%;
+            position: absolute;
+            transition: all 0.2s ease-out;
+            top: 5px;
+            right: 5px;
+            z-index: 10;
+            text-indent: 1px;
+            text-align: center;
+            font-weight: 700;
+            user-select: none;
+            cursor: pointer;
+            &:hover {
+                background: $primary-button;
+            }
+        }
+    }
+
+    &__block {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        &__item {
+            width: 48%;
+            background: #fdfdfd;
+            border: 1px solid #ebebeb;
+        }
+        &__name {
+            background: #f3f3f3;
+            color: $four-color;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            padding: 0.5rem 0.6rem;
+            border: 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ebebeb;
+        }
+        &__list {
+            padding: 0.6rem 0 0 0.6rem;
+            li {
+                margin-bottom: 0.6rem;
+                color: #8d8f98;
+                letter-spacing: 1;
+                font-size: 0.9rem;
+                span {
+                    display: block;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    letter-spacing: -0.05em;
+                    color: $four-color;
+                    text-transform: uppercase;
+                }
+            }
+            &--inline {
+                padding-top: 0;
+                display: flex;
+                li {
+                    min-width: 80px;
+                }
+            }
+        }
+    }
+
+    &__warning,
+    &__files {
+        padding: 1rem 0 0 0;
+        &__title {
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+    }
+
+    &__warning {
+        &__title {
+            color: #c72222;
+        }
+        &__list {
+            padding: 0.5rem 0 0 0;
+            letter-spacing: 1;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            li {
+                margin-bottom: 0.4rem;
+            }
+        }
+    }
+
+    &__files {
+        padding: 1rem 0 0 0;
+        &__title {
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: $four-color;
+            margin-bottom: 15px;
+        }
+        &__list {
+            padding: 0.5rem 0 0 0;
+            letter-spacing: -0.05em;
+            li {
+                margin-bottom: 0.4rem;
+            }
+        }
+        .file-return {
+            margin: 0;
+            height: 31px;
+            color: $secondary-color;
+        }
+    }
+
+
+
+}
+
+.table-saldo {
+    background-color: $bg-table-body;
+    width: 100%;
+    border-collapse: collapse;
+    //table-layout: fixed;
+    position: relative;
+    color: $color-text-table-body;
+    th {
+        text-align: left;
+        padding: .5rem 0;
+        margin-bottom: .5rem;
+        border-bottom: thin solid darken($bg-antd-table-header, 10%);
+        &:first-child {
+            padding-left: 1rem;
+            /*&:before {
+                content: "";
+                position: absolute;
+                width: calc(100% - 1rem);
+                height: 1px;
+                top: 1.9rem;
+                left: .5rem;
+                background-color: darken(#252a4d, 10%);
+            }*/
+        }
+    }
+    tr:nth-child(even) {
+        // @TODO
+        // background-color: rgba(193, 193, 193, .8);   <- era pra ser isso aqui
+        background-color: $bg-table-body-lighter;
+    }
+    td {
+        white-space: nowrap;
+        padding: .7rem 5px;
+        &:first-child {
+            padding-left: 1rem;
+        }
+    }
+    &__tr-header {
+        background-color: $bg-antd-table-header;
+        padding: .5rem;
+        color: $color-text-table-header;
+    }
+    &__button {
+        border: thin solid #c1c1c1;
+        margin-right: .7rem;
+        padding: .3rem .7rem;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        transition: all .3s ease;
+        font-size: .7rem;
+        letter-spacing: 1px;
+        img {
+            height: 1rem;
+            margin-right: .5rem;
+        }
+        &:hover {
+            opacity: .8;
+        }
+        &__disable {
+            border: thin solid #c1c1c1;
+            margin-right: .7rem;
+            padding: .3rem .7rem;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            transition: all .3s ease;
+            font-size: .7rem;
+            letter-spacing: 1px;
+            cursor: not-allowed;
+            opacity : 0.5;
+        }
+    }
+    &__txt-opac {
+        opacity: .5;
+    }
+    &__moeda {
+        display: flex;
+        align-items: center;
+        span {
+            font-size: 1rem;
+            width: 30px;
+            //margin-right: .7rem;
+        }
+    }
+    &__percent {
+        width: 5rem;
+        height: .3rem;
+        background-color: $bg-table-body;
+        margin-top: .3rem;
+    }
+    &__percent-inner {
+        background-color: $bg-table-body;
+        height: 100%;
+    }
+}
+
+.ant-table-tbody td, .ant-table-tbody th {
+  letter-spacing: 0 !important;
+  font-family: $primary-font !important;
+}

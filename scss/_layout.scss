@@ -1,0 +1,39 @@
+@import 'config/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $black-absolute;
+  font-family: $primary-font;
+  font-size: 0.8rem !important;
+  background-color: $bg-container-center !important;
+  letter-spacing: 0 !important;
+}
+
+ul {
+  list-style: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+option {
+  color: #000 !important;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  outline: none;
+  font-family: $primary-font;
+}
+
+input {
+  outline: none;
+}

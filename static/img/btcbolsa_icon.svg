@@ -1,0 +1,52 @@
+<svg width="2900" height="2800" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" clip-rule="evenodd">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#48887B;stroke-width:20}
+    .fil0 {fill:none}
+    .fil5 {fill:#4B4B4D}
+    .fil3 {fill:#9DD3AF}
+    .fil4 {fill:#1EB393}
+    .fil2 {fill:#42CCAD}
+    .fil1 {fill:#71D9C2}
+   ]]>
+  </style>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="Camada_x0020_1">
+   <metadata transform="translate(-16,0) translate(0,16) translate(16,0) translate(16,0) translate(16,0) translate(16,0) translate(16,0) translate(0,16) translate(0,16) translate(0,16) translate(-106,-74) translate(0,-16) translate(-336,16) translate(-640,48) translate(-5712,-32) translate(-16,0) translate(0,16) translate(0,16) translate(0,16) translate(0,-7) translate(0,-16) translate(0,16) translate(0,16) translate(0,1) translate(0,16) translate(1792,-16) translate(0,20) translate(5008,-32) " id="CorelCorpID_0Corel-Layer"/>
+   <polygon id="svg_1" points="1044,1152 1463,921 1886,1163 1879,1651 1460,1890 1044,1659 " class="fil0 str0"/>
+   <polygon id="svg_2" points="2121,2071 2125,1588 1886,1163 1879,1651 " class="fil1 str0"/>
+   <polygon id="svg_3" points="1062,321 1452,79 959,77 549,332 " class="fil2 str0"/>
+   <polygon id="svg_4" points="1057,329 528,347 310,744 793,737 " class="fil2 str0"/>
+   <polygon id="svg_5" points="793,737 310,744 321,1217 798,1236 " class="fil2 str0"/>
+   <polygon id="svg_6" points="552,1659 321,1217 798,1236 1044,1659 " class="fil2 str0"/>
+   <polygon id="svg_7" points="970,1897 552,1659 1044,1659 1460,1890 " class="fil2 str0"/>
+   <polygon id="svg_8" points="321,1217 310,744 64,1158 68,1642 " class="fil1 str0"/>
+   <polygon id="svg_9" points="66,1668 321,1217 552,1659 313,2076 " class="fil1 str0"/>
+   <polygon id="svg_10" points="313,2076 552,1659 970,1897 727,2288 " class="fil1 str0"/>
+   <polygon id="svg_11" points="970,1897 727,2288 1230,2300 1460,1890 " class="fil1 str0"/>
+   <polygon id="svg_12" points="727,2288 313,2076 565,2497 992,2729 " class="fil1 str0"/>
+   <polygon id="svg_13" points="727,2288 1019,2741 1469,2723 1230,2300 " class="fil1 str0"/>
+   <polygon id="svg_14" points="1842,2479 2121,2071 1879,1651 1619,2063 " class="fil1 str0"/>
+   <polygon id="svg_15" points="1896,789 2374,1160 1886,1163 1463,921 " class="fil3 str0"/>
+   <polygon id="svg_16" points="2125,1588 1886,1163 2374,1160 2588,1601 " class="fil3 str0"/>
+   <polygon id="svg_17" points="2602,2073 2121,2071 2125,1588 2588,1601 " class="fil3 str0"/>
+   <polygon id="svg_18" points="2852,1655 2602,2073 2588,1601 2852,1165 " class="fil3 str0"/>
+   <polygon id="svg_19" points="2852,1149 2588,1601 2374,1160 2608,742 " class="fil3 str0"/>
+   <polygon id="svg_20" points="2374,1160 2608,742 2192,523 1896,789 " class="fil3 str0"/>
+   <polygon id="svg_21" points="2608,742 2192,523 1946,79 2363,319 " class="fil3 str0"/>
+   <polygon id="svg_22" points="2192,523 1922,64 1452,79 1705,511 " class="fil3 str0"/>
+   <polygon id="svg_23" points="2177,523 1705,511 1463,921 1896,789 " class="fil3 str0"/>
+   <polygon id="svg_24" points="1288,742 1690,526 1463,921 1044,1152 " class="fil3 str0"/>
+   <polygon id="svg_25" points="1288,742 1062,321 1452,79 1705,511 " class="fil3 str0"/>
+   <polygon id="svg_26" points="1288,742 1044,1152 793,737 1065,326 " class="fil3 str0"/>
+   <polygon id="svg_27" points="798,1236 1044,1636 1044,1152 793,758 " class="fil3 str0"/>
+   <polygon id="svg_28" points="1842,2479 2121,2071 2602,2073 2362,2479 " class="fil3 str0"/>
+   <polygon id="svg_29" points="1842,2479 2347,2488 1945,2727 1469,2723 " class="fil3 str0"/>
+   <polygon id="svg_30" points="1469,2723 1842,2479 1619,2063 1230,2300 " class="fil1 str0"/>
+   <polygon id="svg_31" points="1863,1660 1460,1890 1249,2282 1619,2063 " class="fil1 str0"/>
+  </g>
+ </g>
+</svg>

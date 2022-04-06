@@ -1,0 +1,45 @@
+.grafico {
+    &__header {
+        background-color: $bg-antd-table-header;
+        display: flex;
+        padding: .5rem 1rem;
+        align-items: center;
+    }
+    &__input {
+        background-color: #1B1C3F;
+        border: none;
+        padding: .5rem;
+        color: #FFF;
+        width: 100%;
+        box-sizing: border-box;
+        &::placeholder {
+            color: #CCC;
+        }
+    }
+    &__txt {
+        margin-left: auto;
+        font-size: 1rem;
+        font-weight: bold;
+        // color: $color-text-filter;
+    }
+    &__container-select {
+        position: relative;
+        width: 12rem;
+    }
+    &__list {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background-color: #1B1C3F;
+        z-index: 1;
+        //border-
+    }
+    &__item {
+        padding: .5rem;
+        cursor: pointer;
+        &:hover {
+            background-color: #FFF;
+            color: #1B1C3F;
+        }
+    }
+}

@@ -1,0 +1,218 @@
+image: docker:18-git
+
+variables:
+  KUBERNETES_VERSION: 1.11.9
+  HELM_VERSION: 2.13.1
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - build
+  - build_prod
+  - deploy-stg
+  - deploy-pro
+
+services:
+  - docker:18-dind
+
+build:
+  stage: build
+  image: docker:stable-git
+  services:
+  - docker:stable-dind
+  script:
+    - setup_docker
+    - build
+  only:
+    - develop
+
+build-prod:
+  stage: build
+  image: docker:stable-git
+  services:
+  - docker:stable-dind
+  script:
+    - setup_docker
+    - build_prod
+  only:
+    - develop
+
+
+deploy-stg:
+  stage: deploy-stg
+  script:
+    - install_dependencies
+    - helm upgrade --install ${CI_PROJECT_NAME}-stg --namespace staging --wait --set image.repository=${CI_REGISTRY_IMAGE} --set image.tag=${CI_COMMIT_SHA} helm/${CI_PROJECT_NAME}/
+  environment:
+    name: staging
+  only:
+    - develop
+
+deploy-production:
+  stage: deploy-pro
+  script:
+    - install_dependencies
+    - helm upgrade --install ${CI_PROJECT_NAME}-pro --namespace production --wait --set image.repository=${CI_REGISTRY_IMAGE} --set image.tag=${CI_COMMIT_SHA}-PROD helm/${CI_PROJECT_NAME}/ -f helm/${CI_PROJECT_NAME}/production-values.yaml
+  environment:
+    name: production
+  when: manual
+  only:
+    - develop
+
+
+
+.deploy_helpers: &deploy_helpers |
+  function setup_docker() {
+    if ! docker info &>/dev/null; then
+      if [ -z "$DOCKER_HOST" -a "$KUBERNETES_PORT" ]; then
+        export DOCKER_HOST='tcp://localhost:2375'
+      fi
+    fi
+  }
+
+  function registry_login() {
+    if [[ -n "$CI_REGISTRY_USER" ]]; then
+      echo "Logging to GitLab Container Registry with CI credentials..."
+      docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+      echo ""
+    fi
+  }
+
+
+
+  function install_dependencies() {
+    apk add --update-cache --upgrade curl
+    apk add -U openssl tar gzip bash ca-certificates git
+    curl -sSL -o /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+    curl -sSL -O https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk
+    apk add glibc-2.28-r0.apk
+    rm glibc-2.28-r0.apk
+
+    curl -sS "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx
+    mv linux-amd64/helm /usr/bin/
+    mv linux-amd64/tiller /usr/bin/
+    helm version --client
+    tiller -version
+
+    curl -sSL -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl"
+    chmod +x /usr/bin/kubectl
+    kubectl version --client
+
+    curl -sL https://github.com/digitalocean/doctl/releases/download/v1.15.0/doctl-1.15.0-linux-amd64.tar.gz | tar -xzv
+    mv doctl /usr/bin/
+    mkdir -p ~/.kube
+    doctl kubernetes cluster kubeconfig show ${CLUSTER_NAME} -t ${DO_TOKEN} > ~/.kube/config
+  }
+
+  function initialize_tiller() {
+    echo "Checking Tiller..."
+
+    export HELM_HOST="localhost:44134"
+    tiller -listen ${HELM_HOST} -alsologtostderr > /dev/null 2>&1 &
+    echo "Tiller is listening on ${HELM_HOST}"
+
+    if ! helm version --debug; then
+      echo "Failed to init Tiller."
+      return 1
+    fi
+    echo ""
+  }
+
+  function build() {
+    registry_login
+
+    if [[ -f Dockerfile ]]; then
+      echo "Building Dockerfile-based application..."
+      docker build \
+        --build-arg HTTP_PROXY="$HTTP_PROXY" \
+        --build-arg http_proxy="$http_proxy" \
+        --build-arg HTTPS_PROXY="$HTTPS_PROXY" \
+        --build-arg https_proxy="$https_proxy" \
+        --build-arg FTP_PROXY="$FTP_PROXY" \
+        --build-arg ftp_proxy="$ftp_proxy" \
+        --build-arg NO_PROXY="$NO_PROXY" \
+        --build-arg no_proxy="$no_proxy" \
+        --build-arg API_URL=$API_URL_STG \
+        --build-arg SOCKET_URL=$SOCKET_URL_STG \
+        -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+    else
+      echo "Building Heroku-based application using gliderlabs/herokuish docker image..."
+      docker run -i \
+        -e BUILDPACK_URL \
+        -e HTTP_PROXY \
+        -e http_proxy \
+        -e HTTPS_PROXY \
+        -e https_proxy \
+        -e FTP_PROXY \
+        -e ftp_proxy \
+        -e NO_PROXY \
+        -e no_proxy \
+        -e API_URL=$API_URL_STG \
+        -e SOCKET_URL=$SOCKET_URL_STG \
+        --name="$CI_CONTAINER_NAME" -v "$(pwd):/tmp/app:ro" gliderlabs/herokuish /bin/herokuish buildpack build
+      docker commit "$CI_CONTAINER_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
+      docker rm "$CI_CONTAINER_NAME" >/dev/null
+      echo ""
+
+      echo "Configuring $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA docker image..."
+      docker create --expose 5000 --env PORT=5000 --name="$CI_CONTAINER_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" /bin/herokuish procfile start web
+      docker commit "$CI_CONTAINER_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
+      docker rm "$CI_CONTAINER_NAME" >/dev/null
+      echo ""
+    fi
+
+    echo "Pushing to GitLab Container Registry..."
+    docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
+    echo ""
+  }
+
+  function build_prod() {
+    registry_login
+
+    if [[ -f Dockerfile ]]; then
+      echo "Building Dockerfile-based application..."
+      docker build \
+        --build-arg HTTP_PROXY="$HTTP_PROXY" \
+        --build-arg http_proxy="$http_proxy" \
+        --build-arg HTTPS_PROXY="$HTTPS_PROXY" \
+        --build-arg https_proxy="$https_proxy" \
+        --build-arg FTP_PROXY="$FTP_PROXY" \
+        --build-arg ftp_proxy="$ftp_proxy" \
+        --build-arg NO_PROXY="$NO_PROXY" \
+        --build-arg no_proxy="$no_proxy" \
+        --build-arg API_URL=$API_URL \
+        --build-arg SOCKET_URL=$SOCKET_URL \
+        -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA-PROD" .
+    else
+      echo "Building Heroku-based application using gliderlabs/herokuish docker image..."
+      docker run -i \
+        -e BUILDPACK_URL \
+        -e HTTP_PROXY \
+        -e http_proxy \
+        -e HTTPS_PROXY \
+        -e https_proxy \
+        -e FTP_PROXY \
+        -e ftp_proxy \
+        -e NO_PROXY \
+        -e no_proxy \
+        -e API_URL=$API_URL \
+        -e SOCKET_URL=$SOCKET_URL \
+        --name="$CI_CONTAINER_NAME" -v "$(pwd):/tmp/app:ro" gliderlabs/herokuish /bin/herokuish buildpack build
+      docker commit "$CI_CONTAINER_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA-PROD"
+      docker rm "$CI_CONTAINER_NAME" >/dev/null
+      echo ""
+
+      echo "Configuring $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA docker image..."
+      docker create --expose 5000 --env PORT=5000 --name="$CI_CONTAINER_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA-PROD" /bin/herokuish procfile start web
+      docker commit "$CI_CONTAINER_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA-PROD"
+      docker rm "$CI_CONTAINER_NAME" >/dev/null
+      echo ""
+    fi
+
+    echo "Pushing to GitLab Container Registry..."
+    docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA-PROD"
+    echo ""
+  }
+
+
+before_script:
+  - *deploy_helpers

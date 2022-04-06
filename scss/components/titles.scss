@@ -1,0 +1,48 @@
+// Titles
+
+.page-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: thin solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    height: 40px;
+    padding: 0;
+    &__name {
+        font: {
+            family: $primary-font;
+            size: 1.2rem;
+            weight: 400;
+        }
+        color: $black-absolute;
+        text-transform: uppercase;
+        letter-spacing: 0;
+        a {
+            text-decoration: none;
+            color: inherit;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        span {
+            $current-color: #7d7d7d;
+            $current-arrow: 13px;
+            position: relative;
+            color: $current-color;
+            font-weight: 400;
+            margin-left: 35px;
+            &:before {
+                content: '';
+                transform: rotate(-45deg);
+                position: absolute;
+                left: -30px;
+                top: 3px;
+                width: $current-arrow;
+                height: $current-arrow;
+                border-right: 1px solid $current-color;
+                border-bottom: 1px solid $current-color;
+            }
+        }
+    }
+}

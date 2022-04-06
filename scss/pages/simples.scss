@@ -1,0 +1,290 @@
+#currency_select{
+  padding: 0 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1280px) {
+  #currency_select{
+    height: 150px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin-bottom: 50px;
+
+    > div {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .simple-pair-button {
+      flex: none;
+      width: 70vw;
+      display: block;
+
+      &:first-child{
+        margin-left: 0;
+      }
+
+      img {
+        max-width: 50px;
+      }
+    }
+  }
+}
+
+.simple-pair-button {
+  display: inline-block;
+  background: rgba(0,0,0,.1) !important;
+  color: #fff !important;
+  padding: 20px 10px;
+  min-width: 150px;
+  height: auto;
+  border: 1px solid transparent !important;
+  margin: 10px;
+  font-weight: bold !important;
+  text-align: center;
+}
+
+.simple-pair-button:hover, .simple-pair-button.active {
+  background: rgba(0,0,0,.3) !important;
+}
+
+.simple-pair-button img {
+  display: block;
+  width: 40%;
+  margin: auto;
+  padding: 0 !important;
+}
+
+.simple-pair-button span {
+  display: block;
+  width: 100%;
+  text-transform: capitalize;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.simple-pair-button p {
+  font-weight: normal !important;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+.simple-btn-parent {
+  width: calc(100% - 6%);
+  text-align: center;
+  margin: auto;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.simple-btn {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 50px !important;
+  font-weight: 400 !important;
+  background: #fff !important;
+  color: #555 !important;
+}
+
+.simple-btn-buy {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.simple-btn-sell {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.simple-btn-buy.active {
+  background: rgb(18,171,104) !important;
+  color: #fff !important;
+}
+.simple-btn-sell.active {
+  background: rgb(245,34,45) !important;
+  color: #fff !important;
+}
+
+.plans-area {
+  color: #ffffff;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .plan {
+    flex-grow: 20;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    // border: 2px solid rgba(255,255,255,.1);
+    background-color: $bg-table-body;
+    border-radius: 0px;
+
+    &:last-child{
+      flex-grow: 1;
+    }
+
+    &:hover i, &.hover i{
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+
+  .plan-features {
+    text-align: center;
+    padding: 20px 0 20px;
+    margin: 0;
+    list-style: outside none none;
+    color: $color-text-table-body;
+    text-transform: uppercase;
+
+    h1{
+      margin-top: 20px;
+    }
+    
+    h1, h4{
+      font-weight: normal;
+    }
+
+    li{
+      padding: 8px 5%;
+      font-weight: normal;
+    }
+
+    i{
+      margin-right: 8px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    input{
+      background: transparent;
+      border: 1px dashed rgba(255,255,255,.6);
+      outline: none;
+      color: $color-text-table-body;
+      font-size: 1.3rem;
+      width: 60%;
+      text-align: center;
+      font-weight: normal;
+    }
+  }
+}
+
+.input-price {
+    background: transparent;
+    border: 1px dashed rgba(255,255,255,.1);
+    outline: none;
+    color: #fff;
+    font-size: 1.3rem;
+    width: 80%;
+    text-align: center;
+    font-weight: normal;
+    margin-top: .3rem;
+    border-radius: 3px;
+    padding: 6px;
+}
+
+.plans-area * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+.plans-area header {
+  background-color: $bg-antd-table-header;
+  color: $color-text-table-header;
+  // border-bottom: 2px solid rgba(255,255,255,.1);
+  text-align: center;
+}
+.plans-area .plan-title {
+  background-color: rgba(0,0,0,.3);
+  position: relative;
+  margin: 0;
+  padding: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+.plans-area .plan-cost {
+  padding: 10px;
+  text-align: center;
+  background: rgba(0,0,0,.1);
+}
+.plans-area .plan-price {
+  font-weight: normal;
+  font-size: 1.5em;
+}
+.plans-area .plan-type {
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+
+.plans-area .plan-select {
+  border-top: 1px solid rgba(255,255,255,0.4);
+  padding: 20px;
+  text-align: center;
+}
+.plans-area .plan-select a {
+  background-color: #12ab68;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: inline-block;
+}
+.plans-area .plan.buy .plan-select a {
+  background-color: #12ab68;
+  color: #fff;
+}
+.plans-area .plan.sell .plan-select a {
+  background-color: rgb(245,34,45);
+  color: #fff;
+}
+.plans-area .featured {
+  margin-top: -10px;
+  border-color: rgba(255,255,255,.2);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  border-radius: 8px;
+}
+.plans-area .featured .plan-select {
+  padding: 30px 20px;
+}
+@media only screen and (max-width: 767px) {
+  .plans-area .plan {
+    width: 50%;
+  }
+  .plans-area .plan-title,
+  .plans-area .plan-select a {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .plans-area .plan-select,
+  .plans-area .featured .plan-select {
+    padding: 20px;
+  }
+  .plans-area .featured {
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .plans-area .plan {
+    width: 100%;
+  }
+}

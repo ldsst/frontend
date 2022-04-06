@@ -1,0 +1,154 @@
+.pagamento {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        * {
+            box-sizing: border-box;
+        }
+    }
+    &__simbol {
+        height: 1rem;
+        margin-left: auto;
+    }
+    &__infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0 30px 30px;
+    }
+    &__image {
+        height: 60px;
+        width: 60px;
+        background: url('/static/img/bancos.png') 0 0 no-repeat;
+        img {
+            max-width: 100%;
+            // display: none;
+        }
+    }
+    &__account {
+        text-align: left;
+        font-size: 15px;
+        line-height: 22px;
+        padding-left: 15px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        strong {
+            width: 70px;
+            display: inline-block;
+            font-weight: 600;
+        }
+    }
+    &__name {
+        width: 100%;
+        height: 50px;
+        text-transform: uppercase;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 700;
+        background: rgba(94,205,240,0.7);
+        letter-spacing: -0.02em;
+    }
+    &__item {
+        cursor: pointer;
+        width: calc((100% / #{$item-per-line}) - #{$item-spacing});
+        height: 170px;
+        margin: 0 $item-spacing $item-spacing 0;
+        display: flex;
+        flex-wrap: wrap;
+        background: #eee;
+        color: #333;
+        // &--selected {
+        //     opacity: .8;
+        //     border: thin solid $primary-color;
+        // }
+        @media screen and (max-width: 1500px) {
+            width: calc((100% / 3) - #{$item-spacing});
+        }
+        @media screen and (max-width: 1200px) {
+            width: calc((100% / 2) - #{$item-spacing});
+        }
+        @media screen and (max-width: 991px) {
+            width: 100%;
+        }
+        &:nth-child(4n) {
+            // margin-right: 0;
+        }
+        &:hover {
+            background: white;
+            .pagamento__name {
+                // color: $item-color;
+                // background: #f5f5f5;
+            }
+            .pagamento__account {
+                // color: $color-text-filter;
+            }
+            .pagamento__image {
+              -webkit-filter: grayscale(1) invert(0.6);
+              filter: grayscale(1) invert(0.6);
+            }
+        }
+        &.santander {
+            &:hover {
+                .pagamento__name {
+                    color: #fe0000;
+                }
+                .pagamento__image {
+                    background-position: 0 -60px;
+                }
+            }
+        }
+        &.bradesco {
+            .pagamento__image {
+                background-position: 0 -120px;
+            }
+            &:hover {
+                .pagamento__name {
+                    color: #ff0000;
+                }
+                .pagamento__image {
+                    background-position: 0 -180px;
+                }
+            }
+        }
+        &.banco-do-brasil {
+            .pagamento__image {
+                background-position: 0 -240px;
+            }
+            &:hover {
+                .pagamento__name {
+                    color: #393185;
+                }
+                .pagamento__image {
+                    background-position: 0 -300px;
+                }
+            }
+        }
+        &.caixa {
+            .pagamento__image {
+                background-position: 0 -360px;
+            }
+            &:hover {
+                .pagamento__name {
+                    color: #db8135;
+                }
+                .pagamento__image {
+                    background-position: 0 -420px;
+                }
+            }
+        }
+    }
+    &__item-add {
+        border: 1px dashed white;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.4;
+        img {
+            width: 15%;
+        }
+        &:hover {
+            background: #eee;
+            opacity: 0.8;
+        }
+    }
+}

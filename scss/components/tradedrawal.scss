@@ -1,0 +1,23 @@
+.trade-dral {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: #2E345C;
+    z-index: 1;
+    &__header {
+        background-color: #313F6C;
+        height: 5rem;
+        padding: 0 1rem;
+        position: relative;
+    }
+    &__close {
+        padding: .3rem;
+        position: absolute;
+        opacity: .5;
+        top: 1rem;
+        right: 1rem;
+        border: thin solid #c1c1c1;
+    }
+}

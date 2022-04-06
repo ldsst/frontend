@@ -1,0 +1,45 @@
+// Colors
+$primary-color: #333;
+$secondary-color: rgba(94,205,240,1);
+$third-color: #FF5B5B;
+$four-color: #333333;
+$hover-color: #220EAF;
+$black-absolute: #111;
+$main-color: #f1f1f1;
+$second-color: rgb(57, 204, 145);
+$table-bg-gray: #c1c1c1;
+
+// Currencies
+$bitcoint-color: #f7931a;
+
+// Buttons
+$primary-button: $primary-color;
+
+$buy-color: $bitcoint-color;
+$sell-color: $third-color;
+
+$bg-loading: $main-color;
+$bg-login: $main-color;
+$bg-container-center: $main-color;
+$bg-antd-table-header: gray;
+$bg-table-body: $table-bg-gray;
+$bg-table-body-lighter: #d6d6d6;
+$bg-table-body-hover: $table-bg-gray;
+$bg-antd-table-pagination-item : #c7c7c9;
+$bg-antd-table-button-next-pagination: $table-bg-gray;
+$bg-navbar: $second-color;
+$bg-navbar-border: rgba(0,0,0,.3);
+// $header-nav-color: #000000;
+$header-nav-color: $table-bg-gray;
+// Fonts
+$primary-font: OpenSans, sans-serif, Arial !important;
+
+$color-text-table-body: $black-absolute;
+$color-text-table-header: #fff;
+
+$color-text-filter: $black-absolute;
+
+$item-per-line: 4;
+$item-spacing: 15px;
+$item-color: $four-color;
+$item-header: $secondary-color;

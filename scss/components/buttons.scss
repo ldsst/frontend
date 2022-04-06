@@ -1,0 +1,89 @@
+// Buttons
+
+.primary-button {
+    font: {
+        family: $primary-font;
+        weight: 600;
+    }
+    background: white;
+    text-decoration: none;
+    color: #9a9a9a;
+    border: 1px solid transparent;
+    letter-spacing: 0;
+    padding: 0.3rem 1rem 0.3rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease-out;
+    &:hover {
+        color: darken(#9a9a9a, 10%);
+    }
+
+    &--text {
+        padding: 0;
+        color: $primary-color;
+        background: transparent;
+        &:hover {
+            color: darken($primary-color, 10%);
+        }
+    }
+
+    &--cancel {
+        color: $third-color;
+        &:hover {
+            color: darken($third-color, 10%);
+        }
+    }
+
+    &--continue,
+    &--upload,
+    &--header {
+        color: white;
+        background: $primary-button;
+        border-color: $primary-button;
+        &:hover {
+            color: white;
+            background: darken($primary-button, 8%);
+            border-color: darken($primary-button, 8%);
+        }
+    }
+}
+
+.success-button {
+    font: {
+        family: $primary-font;
+        weight: 600;
+    }
+    background: #12AB68;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid transparent;
+    letter-spacing: 0;
+    padding: 0.3rem 1rem 0.3rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease-out;
+    &:hover {
+        background: darken(#12AB68, 10%);
+        color: #fff;
+    }
+}
+
+.dark-button {
+    font: {
+        family: $primary-font;
+        weight: 600;
+    }
+    background: rgba(0,0,0,.3);
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid transparent;
+    letter-spacing: 0;
+    padding: 0.3rem 1rem 0.3rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease-out;
+    &:hover {
+        background: rgba(0,0,0,.5);
+        color: #fff;
+    }
+}
